@@ -47,6 +47,12 @@ public class DepartmentRepoImpl implements DepartmentRepo {
 
     @Override
     public void update(Long id, Department newDepartment) {
+        Department department = entityManager.find(Department.class, id);
+        department.setName(newDepartment.getName());
+    }
 
+    @Override
+    public List<Department> getAll(Long id) {
+        return entityManager.createQuery("select l from Department l join l.hospital h where h.id=:id",Department.class).setParameter("id",id).getResultList();
     }
 }

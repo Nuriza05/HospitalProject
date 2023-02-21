@@ -1,9 +1,14 @@
 package peaksoft.service.serviceImpl;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import peaksoft.model.Department;
 import peaksoft.model.Doctor;
+import peaksoft.repository.DepartmentRepo;
 import peaksoft.repository.DoctorRepo;
+import peaksoft.repository.HospitalRepo;
+import peaksoft.repository.repositoryImpl.DepartmentRepoImpl;
 import peaksoft.repository.repositoryImpl.DoctorRepoImpl;
 import peaksoft.service.DoctorService;
 
@@ -15,11 +20,22 @@ import java.util.List;
  **/
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class DoctorServiceImpl implements DoctorService {
-    private DoctorRepo doctorRepo;
+    private final DoctorRepo doctorRepo;
+    private final HospitalRepo hospitalRepo;
+    private final DepartmentRepo departmentRepo;
 
     @Override
-    public Doctor save(Doctor doctor) {
+    public Doctor save(Doctor newDoctor) {
+        Doctor doctor = new Doctor();
+        doctor.setId(newDoctor.getId());
+        doctor.setFirstName(newDoctor.getFirstName());
+        doctor.setLastName(newDoctor.getLastName());
+        doctor.setEmail(newDoctor.getEmail());
+        doctor.setPosition(newDoctor.getPosition());
+        doctor.setImageLink(newDoctor.getImageLink());
+        doctor.getDepartmentId().forEach(s -> doctor.getDepartments().add(departmentRepo.getById(s)));
         return doctorRepo.save(doctor);
     }
 
@@ -30,7 +46,7 @@ public class DoctorServiceImpl implements DoctorService {
 
     @Override
     public void deleteById(Long id) {
-       doctorRepo.deleteById(id);
+        doctorRepo.deleteById(id);
     }
 
     @Override
@@ -40,6 +56,6 @@ public class DoctorServiceImpl implements DoctorService {
 
     @Override
     public void update(Long id, Doctor newDoctor) {
-        doctorRepo.update(id,newDoctor);
+        doctorRepo.update(id, newDoctor);
     }
 }

@@ -9,55 +9,59 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="77e82bf0-3a88-4ab2-bd08-9070a3af143e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/peaksoft/api/DepartmentApi.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/peaksoft/api/HospitalApi.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/peaksoft/config/DispatcherServletConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/peaksoft/config/HibernateConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/peaksoft/config/WebAppConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/peaksoft/enums/Gender.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/peaksoft/enums/Position.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/peaksoft/model/Appointment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/peaksoft/model/Department.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/peaksoft/model/Doctor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/peaksoft/model/Hospital.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/peaksoft/model/Patient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/peaksoft/repository/AppointmentRepo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/peaksoft/repository/DepartmentRepo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/peaksoft/repository/DoctorRepo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/peaksoft/repository/HospitalRepo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/peaksoft/repository/PatientRepo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/peaksoft/repository/repositoryImpl/AppointmentRepoImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/peaksoft/repository/repositoryImpl/DepartmentRepoImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/peaksoft/repository/repositoryImpl/DoctorRepoImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/peaksoft/repository/repositoryImpl/HospitalRepoImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/peaksoft/repository/repositoryImpl/PatientRepoImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/peaksoft/service/AppointmentService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/peaksoft/service/DepartmentService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/peaksoft/service/DoctorService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/peaksoft/service/HospitalService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/peaksoft/service/PatientService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/peaksoft/service/serviceImpl/AppointmentServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/peaksoft/service/serviceImpl/DepartmentServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/peaksoft/service/serviceImpl/DoctorServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/peaksoft/service/serviceImpl/HospitalServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/peaksoft/service/serviceImpl/PatientServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/datasource.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/department/mainPage.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/hospital/mainPage.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/hospital/savePage.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/hospital/update.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
+    <list default="true" id="77e82bf0-3a88-4ab2-bd08-9070a3af143e" name="Changes" comment="commmit">
+      <change afterPath="$PROJECT_DIR$/src/main/java/peaksoft/api/AppointmentApi.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/peaksoft/api/DoctorApi.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/peaksoft/api/PatientApi.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/appointment/mainPage.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/appointment/savePage.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/department/savePage.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/department/update.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/doctor/mainPage.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/doctor/savePage.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/doctor/update.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/hospital/show.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/patient/mainPage.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/patient/savePage.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/patient/update.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4492b822-0597-400e-ae20-46690abafdef.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4492b822-0597-400e-ae20-46690abafdef/storage_v2/_src_/database/spring.DQKdyg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4492b822-0597-400e-ae20-46690abafdef/storage_v2/_src_/database/spring.DQKdyg/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4492b822-0597-400e-ae20-46690abafdef/storage_v2/_src_/database/spring.DQKdyg/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4492b822-0597-400e-ae20-46690abafdef/storage_v2/_src_/database/spring.DQKdyg/schema/public.abK9xQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/46fb6b86-1316-452d-8293-4d16eb754215.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/46fb6b86-1316-452d-8293-4d16eb754215/storage_v2/_src_/database/spring.DQKdyg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/46fb6b86-1316-452d-8293-4d16eb754215/storage_v2/_src_/database/spring.DQKdyg/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/46fb6b86-1316-452d-8293-4d16eb754215/storage_v2/_src_/database/spring.DQKdyg/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/46fb6b86-1316-452d-8293-4d16eb754215/storage_v2/_src_/database/spring.DQKdyg/schema/public.abK9xQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/70752e16-481c-4892-8831-f9f077a3eb9f.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/70752e16-481c-4892-8831-f9f077a3eb9f.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/70752e16-481c-4892-8831-f9f077a3eb9f/storage_v2/_src_/database/spring.DQKdyg/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/70752e16-481c-4892-8831-f9f077a3eb9f/storage_v2/_src_/database/spring.DQKdyg/schema/public.abK9xQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/webContexts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/peaksoft/api/DepartmentApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/peaksoft/api/DepartmentApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/peaksoft/api/HospitalApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/peaksoft/api/HospitalApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/peaksoft/enums/Gender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/peaksoft/enums/Gender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/peaksoft/enums/Position.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/peaksoft/model/Appointment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/peaksoft/model/Appointment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/peaksoft/model/Department.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/peaksoft/model/Department.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/peaksoft/model/Doctor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/peaksoft/model/Doctor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/peaksoft/model/Hospital.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/peaksoft/model/Hospital.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/peaksoft/model/Patient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/peaksoft/model/Patient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/peaksoft/repository/DepartmentRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/peaksoft/repository/DepartmentRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/peaksoft/repository/repositoryImpl/DepartmentRepoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/peaksoft/repository/repositoryImpl/DepartmentRepoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/peaksoft/repository/repositoryImpl/DoctorRepoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/peaksoft/repository/repositoryImpl/DoctorRepoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/peaksoft/repository/repositoryImpl/PatientRepoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/peaksoft/repository/repositoryImpl/PatientRepoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/peaksoft/service/DepartmentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/peaksoft/service/DepartmentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/peaksoft/service/serviceImpl/AppointmentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/peaksoft/service/serviceImpl/AppointmentServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/peaksoft/service/serviceImpl/DepartmentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/peaksoft/service/serviceImpl/DepartmentServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/peaksoft/service/serviceImpl/DoctorServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/peaksoft/service/serviceImpl/DoctorServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/peaksoft/service/serviceImpl/HospitalServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/peaksoft/service/serviceImpl/HospitalServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/peaksoft/service/serviceImpl/PatientServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/peaksoft/service/serviceImpl/PatientServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/department/mainPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/department/mainPage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/hospital/mainPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/hospital/mainPage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/hospital/savePage.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/hospital/savePage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/hospital/update.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/hospital/update.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,6 +117,7 @@
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
@@ -132,7 +137,7 @@
   </component>
   <component name="RunManager">
     <configuration name="Tomcat 11.0.0-M1" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 11.0.0-M1" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
-      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080" />
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/hospitals/show" />
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="HospitalProject:war exploded">
@@ -246,11 +251,25 @@
       <workItem from="1676715293055" duration="564000" />
       <workItem from="1676715874242" duration="1765000" />
       <workItem from="1676717711631" duration="333000" />
-      <workItem from="1676718068081" duration="7609000" />
+      <workItem from="1676718068081" duration="8727000" />
+      <workItem from="1676733629865" duration="747000" />
+      <workItem from="1676751027543" duration="3260000" />
+      <workItem from="1676759272043" duration="4000" />
+      <workItem from="1676760184234" duration="63000" />
+      <workItem from="1676835963229" duration="1394000" />
+      <workItem from="1676839357840" duration="2894000" />
+      <workItem from="1676877853972" duration="10298000" />
+      <workItem from="1676890352199" duration="14729000" />
+      <workItem from="1676923913107" duration="17164000" />
+      <workItem from="1676955024071" duration="9106000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="commmit" />
+    <option name="LAST_COMMIT_MESSAGE" value="commmit" />
   </component>
 </project>

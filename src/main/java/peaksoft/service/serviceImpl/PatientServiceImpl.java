@@ -1,11 +1,11 @@
 package peaksoft.service.serviceImpl;
 
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Repository;
+import jakarta.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import peaksoft.model.Patient;
+import peaksoft.repository.HospitalRepo;
 import peaksoft.repository.PatientRepo;
-import peaksoft.repository.repositoryImpl.PatientRepoImpl;
 import peaksoft.service.PatientService;
 
 import java.util.List;
@@ -14,12 +14,20 @@ import java.util.List;
  * @created : Lenovo Nuriza
  **/
 @Service
-@RequiredArgsConstructor
+@Transactional
 public class PatientServiceImpl implements PatientService {
-    private PatientRepo patientRepo;
+    private final PatientRepo patientRepo;
+    private final HospitalRepo hospitalRepo;
+
+    @Autowired
+    public PatientServiceImpl(PatientRepo patientRepo, HospitalRepo hospitalRepo) {
+        this.patientRepo = patientRepo;
+        this.hospitalRepo = hospitalRepo;
+    }
+
     @Override
-    public Patient save(Patient patient) {
-        return patientRepo.save(patient);
+    public Patient save(Patient newpatient) {
+        return patientRepo.save(newpatient);
     }
 
     @Override
@@ -29,7 +37,7 @@ public class PatientServiceImpl implements PatientService {
 
     @Override
     public void deleteById(Long id) {
-       patientRepo.deleteById(id);
+        patientRepo.deleteById(id);
     }
 
     @Override
@@ -39,6 +47,6 @@ public class PatientServiceImpl implements PatientService {
 
     @Override
     public void update(Long id, Patient newPatient) {
-      patientRepo.update(id,newPatient);
+        patientRepo.update(id, newPatient);
     }
 }

@@ -53,6 +53,6 @@ public class DoctorRepoImpl implements DoctorRepo {
         doctor.setPosition(newDoctor.getPosition());
         doctor.setEmail(newDoctor.getEmail());
         doctor.setDepartments(newDoctor.getDepartments());
-        doctor.setAppointments(newDoctor.getAppointments());
+        doctor.setHospital(newDoctor.getHospital());
     }
 }

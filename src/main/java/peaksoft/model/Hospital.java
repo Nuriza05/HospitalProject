@@ -12,24 +12,26 @@ import java.util.List;
  **/
 @Entity
 @Table(name = "hospitals")
-@Getter @Setter
+@Getter
+@Setter
 @NoArgsConstructor
 public class Hospital {
     @Id
-    @SequenceGenerator(name = "hospital_gen",sequenceName = "hospital_seq",allocationSize = 1,initialValue = 3)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "hospital_gen")
+    @SequenceGenerator(name = "hospital_gen", sequenceName = "hospital_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hospital_gen")
     private Long id;
 
     private String name;
     private String address;
-    @OneToMany(mappedBy = "hospital",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "hospital", cascade = CascadeType.ALL)
     private List<Doctor> doctors;
-    @OneToMany(mappedBy = "hospital",cascade = CascadeType.ALL)
-    private List<Patient>patients;
-    @OneToMany(mappedBy = "hospital",cascade = CascadeType.ALL)
-    private List<Department>departments;
+    @OneToMany(mappedBy = "hospital", cascade = CascadeType.ALL)
+    private List<Patient> patients;
+    @OneToMany(mappedBy = "hospital", cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.REMOVE, CascadeType.DETACH})
+    private List<Department> departments;
     @OneToMany(cascade = CascadeType.ALL)
-    private List<Appointment>appointments;
+    private List<Appointment> appointments;
 
     private String imageLink;
+
 }

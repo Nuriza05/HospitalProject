@@ -13,5 +13,6 @@ public interface DepartmentRepo {
     void deleteById(Long id);
     Department getById(Long id);
     void update (Long id, Department newDepartment);
+    List<Department> getAll(Long id);
 
 }

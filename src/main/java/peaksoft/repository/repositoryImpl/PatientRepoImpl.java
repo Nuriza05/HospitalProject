@@ -54,7 +54,6 @@ public class PatientRepoImpl implements PatientRepo {
         patient.setPhoneNumber(newPatient.getPhoneNumber());
         patient.setGender(newPatient.getGender());
         patient.setEmail(newPatient.getEmail());
-        patient.setHospital(newPatient.getHospital());
         patient.setAppoitmentList(newPatient.getAppoitmentList());
     }
 }

@@ -16,6 +16,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class AppointmentServiceImpl implements AppointmentService {
     private final AppointmentRepo appointmentRepo;
+
     @Override
     public Appointment save(Appointment appointment) {
         return appointmentRepo.save(appointment);
@@ -28,7 +29,7 @@ public class AppointmentServiceImpl implements AppointmentService {
 
     @Override
     public void deleteById(Long id) {
-       appointmentRepo.deleteById(id);
+        appointmentRepo.deleteById(id);
     }
 
     @Override
@@ -38,6 +39,6 @@ public class AppointmentServiceImpl implements AppointmentService {
 
     @Override
     public void update(Long id, Appointment newAppointment) {
-      appointmentRepo.update(id,newAppointment);
+        appointmentRepo.update(id, newAppointment);
     }
 }

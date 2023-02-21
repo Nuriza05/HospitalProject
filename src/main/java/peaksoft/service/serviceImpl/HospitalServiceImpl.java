@@ -1,10 +1,10 @@
 package peaksoft.service.serviceImpl;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import peaksoft.model.Hospital;
 import peaksoft.repository.HospitalRepo;
-import peaksoft.repository.repositoryImpl.HospitalRepoImpl;
 import peaksoft.service.HospitalService;
 
 import java.util.List;
@@ -16,6 +16,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class HospitalServiceImpl implements HospitalService {
     private final HospitalRepo hospitalRepo;
+
     @Override
     public Hospital save(Hospital hospital) {
         return hospitalRepo.save(hospital);
@@ -28,7 +29,7 @@ public class HospitalServiceImpl implements HospitalService {
 
     @Override
     public void deleteById(Long id) {
-      hospitalRepo.deleteById(id);
+        hospitalRepo.deleteById(id);
     }
 
     @Override
@@ -38,6 +39,6 @@ public class HospitalServiceImpl implements HospitalService {
 
     @Override
     public void update(Long id, Hospital newHospital) {
-     hospitalRepo.update(id,newHospital);
+        hospitalRepo.update(id, newHospital);
     }
 }

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Main page</title>
+</head>
+<body>
+<div>
+  <a th:href="@{/hospitals/show}">
+    <button type="button">back</button>
+  </a>
+  <a th:href="@{/departments/new}">
+    <button type="button">Add</button>
+  </a>
+</div>
+<div>
+  <table>
+    <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="department : ${departments}">
+      <td th:text="${department.getId()}"></td>
+      <td th:text="${department.getName()}"></td>
+
+      <td>
+        <form th:method="GET" th:action="@{/departments/{id}/edit(id=${department.id})}">-->
+          <input type="submit" class="btn btn-primary" th:value="Update"/>
+        </form>
+      </td>
+      <td>
+        <form th:method="delete" th:action="@{/departments/{id}/delete(id=${department.getId()})}">
+          <input type="submit" class="btn btn-primary " th:value="Delete">
+        </form>
+      </td>
+
+
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>

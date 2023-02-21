@@ -12,17 +12,18 @@ import java.util.List;
  **/
 @Entity
 @Table(name = "departments")
-@Getter @Setter
+@Getter
+@Setter
 @NoArgsConstructor
 public class Department {
     @Id
-    @SequenceGenerator(name = "department_gen",sequenceName = "department_seq",allocationSize = 1,initialValue = 3)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "department_gen")
+    @SequenceGenerator(name = "department_gen", sequenceName = "department_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "department_gen")
     private Long id;
     private String name;
-    @ManyToMany(mappedBy = "departments",cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST})
+    @ManyToMany(mappedBy = "departments", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST})
     private List<Doctor> doctors;
-    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.PERSIST,CascadeType.MERGE})
+    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.PERSIST, CascadeType.MERGE})
     private Hospital hospital;
     @Transient
     private Long hospitalId;
