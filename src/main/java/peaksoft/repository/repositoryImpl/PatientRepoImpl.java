@@ -5,6 +5,8 @@ import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import peaksoft.exceptions.MyException;
+import peaksoft.model.Hospital;
 import peaksoft.model.Patient;
 import peaksoft.repository.PatientRepo;
 
@@ -32,13 +34,13 @@ public class PatientRepoImpl implements PatientRepo {
     }
 
     @Override
-    public List<Patient> getAll() {
-        return entityManager.createQuery("select p from Patient p", Patient.class).getResultList();
+    public List<Patient> getAll(Long id) {
+        return entityManager.createQuery("select l from Patient l join l.hospital h where h.id=:id", Patient.class).setParameter("id",id).getResultList();
     }
 
     @Override
     public void deleteById(Long id) {
-        entityManager.remove(entityManager.find(Patient.class, id));
+        entityManager.remove(entityManager.find(Patient.class,id));
     }
 
     @Override
@@ -47,13 +49,17 @@ public class PatientRepoImpl implements PatientRepo {
     }
 
     @Override
-    public void update(Long id, Patient newPatient) {
-        Patient patient = entityManager.find(Patient.class, id);
-        patient.setFirstName(newPatient.getFirstName());
-        patient.setLastName(newPatient.getLastName());
-        patient.setPhoneNumber(newPatient.getPhoneNumber());
-        patient.setGender(newPatient.getGender());
-        patient.setEmail(newPatient.getEmail());
-        patient.setAppoitmentList(newPatient.getAppoitmentList());
+    public void update(Long id, Patient newPatient) throws MyException {
+        if(newPatient.getPhoneNumber().startsWith("+996") && newPatient.getPhoneNumber().chars().count()==13) {
+            Patient patient = entityManager.find(Patient.class, id);
+            patient.setFirstName(newPatient.getFirstName());
+            patient.setLastName(newPatient.getLastName());
+            patient.setPhoneNumber(newPatient.getPhoneNumber());
+            patient.setGender(newPatient.getGender());
+            patient.setEmail(newPatient.getEmail());
+            patient.setAppoitmentList(newPatient.getAppoitmentList());
+        }else {
+            throw new MyException("Phone number should be starts with +996 and size == 13!");
+        }
     }
 }

@@ -10,8 +10,7 @@
 <body>
 
 <div class="d-flex justify-content-center"></div>
-<form class="p-5 bg-light" th:action="@{/patients/{id}/update(id=${patient.getId()})}" th:object="${patient}"
-      th:method="PUT">
+<form th:action="@{update}" th:object="${patient}" th:method="PUT">
     <input type="hidden" th:field="*{id}">
 
     <div>
@@ -27,8 +26,11 @@
         <input type="text" th:field="*{phoneNumber}" id="phone number">
     </div>
     <div>
-        <label for="gender">gender</label>
-        <input type="text" th:field="*{gender}" id="gender">
+        <select th:field="*{gender}">
+            <option value="">--Gender--</option>
+            <option th:each="gen : ${genders}" th:value="${gen.name()}"
+                    th:text="${gen.name}"></option>
+        </select>
     </div>
     <div>
         <label for="email">email</label>
@@ -39,6 +41,9 @@
     <button type="submit">Update</button>
     <p style="text-align:center;">
 
+</form>
+<form th:action="@{/patients/{hospitalId}(hospitalId=${hospitalId})}">
+    <input type="submit" th:value="Cancel"/>
 </form>
 
 

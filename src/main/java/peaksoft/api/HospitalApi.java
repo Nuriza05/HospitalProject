@@ -31,8 +31,9 @@ public class HospitalApi {
         return "hospital/mainPage";
     }
     @GetMapping("/show")
-    public String findAll(Model model) {
-        model.addAttribute("hospitals", hospitalService.getAll());
+    public String findAll(Model model,@RequestParam(required = false) String keyWord) {
+        model.addAttribute("keyWord",keyWord);
+        model.addAttribute("hospitals", hospitalService.getAll(keyWord));
         return "hospital/show";
     }
 

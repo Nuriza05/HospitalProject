@@ -1,5 +1,4 @@
 package peaksoft.repository.repositoryImpl;
-
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
@@ -19,6 +18,7 @@ public class DepartmentRepoImpl implements DepartmentRepo {
     @PersistenceContext
     private final EntityManager entityManager;
 
+
     @Autowired
     public DepartmentRepoImpl(EntityManager entityManager) {
         this.entityManager = entityManager;
@@ -29,15 +29,9 @@ public class DepartmentRepoImpl implements DepartmentRepo {
         entityManager.persist(department);
         return department;
     }
-
-    @Override
-    public List<Department> getAll() {
-        return entityManager.createQuery("select d from Department d", Department.class).getResultList();
-    }
-
     @Override
     public void deleteById(Long id) {
-        entityManager.remove(entityManager.find(Department.class, id));
+        entityManager.createQuery("delete from Department d where d.id =: id").setParameter("id",id).executeUpdate();
     }
 
     @Override
@@ -46,9 +40,9 @@ public class DepartmentRepoImpl implements DepartmentRepo {
     }
 
     @Override
-    public void update(Long id, Department newDepartment) {
-        Department department = entityManager.find(Department.class, id);
-        department.setName(newDepartment.getName());
+    public void update(Long id, Department newDepartment)  {
+                Department department = entityManager.find(Department.class, id);
+                department.setName(newDepartment.getName());
     }
 
     @Override

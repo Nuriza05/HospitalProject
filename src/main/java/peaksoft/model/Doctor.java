@@ -21,7 +21,7 @@ import java.util.List;
 @NoArgsConstructor
 public class Doctor {
     @Id
-    @SequenceGenerator(name = "generator_gen", sequenceName = "doctors_seq")
+    @SequenceGenerator(name = "doctor_gen", sequenceName = "doctors_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "doctor_gen")
     private Long id;
     @Column(name = "first_name")
@@ -39,7 +39,15 @@ public class Doctor {
     @Column(unique = true)
     private String email;
     @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.PERSIST, CascadeType.MERGE})
-    private List<Department> departments;
+    private List<Department> departments = new ArrayList<>();
+
+    public void addDepartment(Department department) {
+        if (departments == null) {
+            departments = new ArrayList<>();
+        }
+        departments.add(department);
+    }
+
     @OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL)
     private List<Appointment> appointments;
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.PERSIST, CascadeType.MERGE})
@@ -49,5 +57,7 @@ public class Doctor {
     private Long hospitalId;
     @Transient
     private List<Long> departmentId = new ArrayList<>();
-
+    public void setDepartment(Department byId) {
+        departments.add(byId);
+    }
 }

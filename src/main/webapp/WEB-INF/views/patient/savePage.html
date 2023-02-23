@@ -17,7 +17,7 @@
 </head>
 <body>
 <div>
-    <form th:action="@{/patients/savePage}" th:object="${newPatient}" method="POST">
+    <form th:action="@{/patients/{hospitalId}/savePage(hospitalId=${hospitalId})}" th:object="${newPatient}" method="POST">
         <input type="hidden" th:field="*{id}">
         <div>
             <label for="name">First name</label>
@@ -28,6 +28,15 @@
             <label for="lname">Last name</label>
             <input type="text" th:field="*{lastName}" id="lname">
         </div>
+
+        <div>
+            <select th:field="*{gender}">
+                <option value="">--Gender--</option>
+                <option th:each="gen : ${genders}" th:value="${gen.name()}"
+                        th:text="${gen.name}"></option>
+            </select>
+        </div>
+
         <div>
             <label for="email">Email</label>
             <input type="text" th:field="*{email}" id="email">
@@ -36,14 +45,13 @@
             <label for="phnumber">Phone number</label>
             <input type="text" th:field="*{phoneNumber}" id="phnumber">
         </div>
-        <div>
-            <label for="gender">Gender</label>
-            <input type="text" th:field="*{gender}" id="gender">
-        </div>
 
         <div>
             <input type="submit" value="Save">
         </div>
+    </form>
+    <form th:action="@{/patients/{hospitalId}(hospitalId=${hospitalId})}">
+        <input type="submit" th:value="Cancel"/>
     </form>
 </div>
 </body>

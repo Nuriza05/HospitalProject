@@ -6,11 +6,11 @@
 </head>
 <body>
 <div>
-    <a th:href="@{/hospitals/show}">
-        <button class="btn btn-primary" type="button">back</button>
+    <a th:href="@{/hospitals/{hospitalId}/mainPage(hospitalId=${hospitalId})}">
+        <button type="button">back</button>
     </a>
-    <a th:href="@{/patients/new}">
-        <button class="btn btn-primary" type="button">Add</button>
+    <a th:href="@{/patients/{hospitalId}/new(hospitalId=${hospitalId})}">
+        <button type="button">Add</button>
     </a>
 </div>
 <div>
@@ -37,13 +37,13 @@
             <td th:text="${patient.getEmail()}"></td>
 
             <td>
-                <form th:method="GET" th:action="@{/patients/{id}/edit(id=${patient.id})}">-->
+                <form th:method="GET" th:action="@{/patients/{hospitalId}/{patientId}/edit(hospitalId=${hospitalId},patientId=${patient.getId()})}">
                     <input type="submit" th:value="Update"/>
                 </form>
             </td>
 
             <td>
-                <form th:method="delete" th:action="@{/patients/{id}/delete(id=${patient.getId()})}">
+                <form th:method="delete" th:action="@{/patients/{hospitalId}/{patientId}/delete(hospitalId=${hospitalId},patientId=${patient.getId()})}">
                     <input type="submit" th:value="Delete">
                 </form>
             </td>

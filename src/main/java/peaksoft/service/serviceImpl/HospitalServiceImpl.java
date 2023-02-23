@@ -21,12 +21,18 @@ public class HospitalServiceImpl implements HospitalService {
     public Hospital save(Hospital hospital) {
         return hospitalRepo.save(hospital);
     }
-
     @Override
     public List<Hospital> getAll() {
         return hospitalRepo.getAll();
     }
-
+    @Override
+    public List<Hospital> getAll(String keyWord) {
+        if(keyWord !=  null && !keyWord.trim().isEmpty()) {
+           return   hospitalRepo.search(keyWord);
+        }else {
+           return hospitalRepo.getAll();
+        }
+    }
     @Override
     public void deleteById(Long id) {
         hospitalRepo.deleteById(id);

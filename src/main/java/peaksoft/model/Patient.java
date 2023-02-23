@@ -7,6 +7,10 @@ import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.With;
+import org.hibernate.annotations.Check;
+import org.hibernate.annotations.DialectOverride;
+import org.springframework.validation.annotation.Validated;
 import peaksoft.enums.Gender;
 
 import java.util.List;
@@ -48,4 +52,6 @@ public class Patient {
     private List<Appointment> appoitmentList;
     @Transient
     private Long hospitalId;
+
+
 }

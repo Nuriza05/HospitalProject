@@ -9,9 +9,7 @@
 </head>
 <body>
 
-<div class="d-flex justify-content-center"></div>
-<form class="p-5 bg-light" th:action="@{/doctors/{id}/update(id=${doctor.getId()})}" th:object="${doctor}"
-      th:method="PUT">
+<form th:action="@{update}" th:object="${doctor}" th:method="PUT">
     <input type="hidden" th:field="*{id}">
 
     <div>
@@ -38,6 +36,9 @@
     <button type="submit">Update</button>
     <p style="text-align:center;">
 
+</form>
+<form th:action="@{/doctors/{hospitalId}(hospitalId=${hospitalId})}">
+    <input type="submit" th:value="Cancel"/>
 </form>
 
 

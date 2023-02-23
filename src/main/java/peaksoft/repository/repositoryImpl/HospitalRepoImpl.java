@@ -37,6 +37,13 @@ public class HospitalRepoImpl implements HospitalRepo {
     }
 
     @Override
+    public List<Hospital> search(String keyWord) {
+        return entityManager.createQuery(" select l from Hospital l where l.name ilike (:keyWord)", Hospital.class).setParameter("keyWord","%"+keyWord+"%").getResultList();
+
+    }
+
+
+    @Override
     public void deleteById(Long id) {
         entityManager.remove(entityManager.find(Hospital.class, id));
     }

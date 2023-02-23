@@ -25,8 +25,11 @@
         </div>
 
         <div>
-            <input type="submit" value="Save">
+            <input type="submit" value="Save"/>
         </div>
+    </form>
+    <form th:action="@{/departments/{hospitalId}(hospitalId=${hospitalId})}">
+        <input type="submit" th:value="Cancel"/>
     </form>
 </div>
 </body>

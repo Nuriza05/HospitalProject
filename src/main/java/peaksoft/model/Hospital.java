@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -27,11 +28,19 @@ public class Hospital {
     private List<Doctor> doctors;
     @OneToMany(mappedBy = "hospital", cascade = CascadeType.ALL)
     private List<Patient> patients;
-    @OneToMany(mappedBy = "hospital", cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.REMOVE, CascadeType.DETACH})
+    @OneToMany(mappedBy = "hospital", cascade = CascadeType.ALL)
     private List<Department> departments;
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     private List<Appointment> appointments;
 
     private String imageLink;
+    public void addAppoint(Appointment app){
+        if(appointments == null){
+            appointments = new ArrayList<>();
+        }
+        appointments.add(app);
+    }
+
+
 
 }

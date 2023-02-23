@@ -1,5 +1,6 @@
 package peaksoft.repository;
 
+import peaksoft.exceptions.MyException;
 import peaksoft.model.Department;
 
 import java.util.List;
@@ -9,10 +10,9 @@ import java.util.List;
  **/
 public interface DepartmentRepo {
     Department save(Department department);
-    List<Department> getAll();
     void deleteById(Long id);
     Department getById(Long id);
-    void update (Long id, Department newDepartment);
+    void update (Long id, Department newDepartment) ;
     List<Department> getAll(Long id);
 
 }

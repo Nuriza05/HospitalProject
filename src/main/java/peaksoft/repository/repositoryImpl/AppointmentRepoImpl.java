@@ -1,13 +1,15 @@
 package peaksoft.repository.repositoryImpl;
-
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.Query;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import peaksoft.model.Appointment;
+import peaksoft.model.*;
 import peaksoft.repository.AppointmentRepo;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 /**
@@ -19,12 +21,13 @@ public class AppointmentRepoImpl implements AppointmentRepo {
     @PersistenceContext
     private final EntityManager entityManager;
 
+
     @Autowired
 
     public AppointmentRepoImpl(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
-
+    @Transactional
     @Override
     public Appointment save(Appointment appointment) {
         entityManager.persist(appointment);
@@ -32,13 +35,17 @@ public class AppointmentRepoImpl implements AppointmentRepo {
     }
 
     @Override
-    public List<Appointment> getAll() {
-        return entityManager.createQuery("select a from Appointment a", Appointment.class).getResultList();
+    public List<Appointment> getAll(Long id) {
+        return entityManager.createQuery("select h from Hospital l join l.appointments h where l.id=:id ", Appointment.class).setParameter("id",id).getResultList();
     }
 
     @Override
     public void deleteById(Long id) {
-        entityManager.remove(entityManager.find(Appointment.class, id));
+        List<Hospital> hospitals = entityManager.createQuery("select l from Hospital l", Hospital.class).getResultList();
+        hospitals.forEach(h-> h.getAppointments().removeIf(a->a.getId().equals(id)));
+        entityManager.remove(entityManager.find(Appointment.class,id));
+
+
     }
 
     @Override
@@ -50,8 +57,9 @@ public class AppointmentRepoImpl implements AppointmentRepo {
     public void update(Long id, Appointment newAppointment) {
         Appointment appointment = entityManager.find(Appointment.class, id);
         appointment.setDate(newAppointment.getDate());
-        appointment.setPatient(newAppointment.getPatient());
-        appointment.setDoctor(newAppointment.getDoctor());
-        appointment.setDepartment(newAppointment.getDepartment());
+        appointment.setPatient(entityManager.find(Patient.class,newAppointment.getPatientId()));
+        appointment.setDoctor(entityManager.find(Doctor.class,newAppointment.getPatientId()));
+        appointment.setDepartment(entityManager.find(Department.class,newAppointment.getPatientId()));
+
     }
 }

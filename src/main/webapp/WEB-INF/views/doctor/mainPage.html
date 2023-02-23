@@ -21,10 +21,10 @@
 </head>
 <body>
 <div>
-    <a th:href="@{/hospitals/show}">
+    <a th:href="@{/hospitals/{hospitalId}/mainPage(hospitalId=${hospitalId})}">
         <button type="button">back</button>
     </a>
-    <a th:href="@{/doctors/new}">
+    <a th:href="@{/doctors/{hospitalId}/new(hospitalId=${hospitalId})}">
         <button type="button">Add</button>
     </a>
 </div>
@@ -42,13 +42,12 @@
         </div>
 
         <div class="div">
-
-            <form th:method="GET" th:action="@{/doctors/{id}/edit(id=${doctor.getId()})}">
-                <input type="submit" class="btn btn-primary" th:value="  Update "/>
+            <form th:method="GET" th:action="@{/doctors/{hospitalId}/{doctorId}/edit(hospitalId=${hospitalId},doctorId=${doctor.getId()})}">
+                <input type="submit"  th:value="Update"/>
             </form>
 
-            <form th:method="DELETE" th:action="@{/doctors/{id}/delete(id=${doctor.getId()})}">
-                <input type="submit" class="btn btn-primary" th:value="  Delete  ">
+            <form th:method="DELETE" th:action="@{/doctors/{hospitalId}/{doctorId}/delete(hospitalId=${hospitalId},doctorId=${doctor.getId()})}">
+                <input type="submit" th:value="Delete"/>
             </form>
         </div>
     </div>
@@ -59,3 +58,4 @@
         crossorigin="anonymous"></script>
 
 </html>
+

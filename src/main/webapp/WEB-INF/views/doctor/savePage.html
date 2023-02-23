@@ -16,8 +16,8 @@
             crossorigin="anonymous"></script>
 </head>
 <body>
-<div class="d-flex justify-content-center">
-    <form class="p-5 bg-light" action="#" th:action="@{/doctors/savePage}" th:object="${newDoctor}" method="post">
+
+    <form th:action="@{/doctors/{hospitalId}/savePage(hospitalId=${hospitalId})}" th:object="${newDoctor}" method="POST">
         <input type="hidden" th:field="*{id}">
         <div>
             <label for="firstName">firstName</label>
@@ -40,16 +40,19 @@
             <input type="text" th:field="*{imageLink}" id="imageLink">
         </div>
         <div>
-            <select th:field="*{departmentId}">
-                <option value="">--Select a department--</option>
-                <option th:each="department : ${departments}" th:value="${department.id}"
+            <select th:field="*{departmentId}" multiple required>
+                <option  value="">--Select a department--</option>
+                <option th:each="department : ${departments}" th:value="${department.getId()}"
                         th:text="${department.name}"></option>
             </select>
         </div>
 
         <div>
-            <input type="submit" value="Save" class="btn btn-primary btn-lg">
+            <input type="submit" value="Save">
         </div>
+    </form>
+    <form th:action="@{/doctors/{hospitalId}(hospitalId=${hospitalId})}">
+        <input type="submit" th:value="Cancel"/>
     </form>
 </div>
 </body>

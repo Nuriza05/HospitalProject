@@ -1,13 +1,9 @@
 package peaksoft.api;
-
-import jakarta.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-
+import peaksoft.model.Department;
 import peaksoft.model.Doctor;
 import peaksoft.service.DepartmentService;
 import peaksoft.service.DoctorService;
@@ -20,51 +16,51 @@ import peaksoft.service.HospitalService;
 @RequestMapping("/doctors")
 public class DoctorApi {
     private final DoctorService doctorService;
-    private final HospitalService hospitalService;
     private final DepartmentService departmentService;
 
     @Autowired
-    public DoctorApi(DoctorService doctorService, HospitalService hospitalService, DepartmentService departmentService) {
+    public DoctorApi(DoctorService doctorService, DepartmentService departmentService) {
         this.doctorService = doctorService;
-        this.hospitalService = hospitalService;
         this.departmentService = departmentService;
     }
 
-    @GetMapping
-    public String findAll(Model model) {
-        model.addAttribute("doctors", doctorService.getAll());
+    @GetMapping("/{hospitalId}")
+    public String findAll(@PathVariable Long hospitalId, Model model) {
+        model.addAttribute("doctors", doctorService.getAll(hospitalId));
         return "doctor/mainPage";
     }
 
-    @GetMapping("/new")
-    public String create(Model model) {
+    @GetMapping("/{hospitalId}/new")
+    public String create(@PathVariable Long hospitalId, Model model) {
         model.addAttribute("newDoctor", new Doctor());
-        model.addAttribute("hospitals", hospitalService.getAll());
-        model.addAttribute("departments", departmentService.getAll());
+        model.addAttribute(hospitalId);
+        model.addAttribute("departments", departmentService.getAll(hospitalId));
         return "doctor/savePage";
     }
 
-    @PostMapping("/savePage")
-    public String save(@ModelAttribute("newDoctor") Doctor doctor) {
-        doctorService.save(doctor);
-        return "redirect:/doctors";
+    @PostMapping("/{hospitalId}/savePage")
+    public String save(@PathVariable Long hospitalId, @ModelAttribute("newDoctor") Doctor doctor) {
+        doctorService.save(hospitalId, doctor);
+        return "redirect:/doctors/" + hospitalId;
     }
 
-    @DeleteMapping("/{id}/delete")
-    public String deleteById(@PathVariable("id") Long id) {
-        doctorService.deleteById(id);
-        return "redirect:/doctors";
+    @DeleteMapping("/{hospitalId}/{doctorId}/delete")
+    public String deleteById(@PathVariable Long hospitalId, @PathVariable Long doctorId) {
+        doctorService.deleteById(doctorId);
+        return "redirect:/doctors/" + hospitalId;
     }
 
-    @GetMapping("/{id}/edit")
-    public String edit(Model model, @PathVariable("id") Long id) {
-        model.addAttribute("doctor", doctorService.getById(id));
+    @GetMapping("/{hospitalId}/{doctorId}/edit")
+    public String edit(Model model, @PathVariable Long doctorId, @PathVariable Long hospitalId) {
+        model.addAttribute("doctor",doctorService.getById(doctorId));
+        model.addAttribute("hospitalId", hospitalId);
         return "doctor/update";
     }
 
-    @PutMapping("/{id}/update")
-    public String update(@PathVariable("id") Long id, @ModelAttribute("newDoctor") Doctor newDoctor) {
-        doctorService.update(id, newDoctor);
-        return "redirect:/doctors";
+    @PutMapping("/{hospitalId}/{doctorId}/update")
+    public String update(@PathVariable Long hospitalId, @PathVariable Long doctorId, @ModelAttribute("doctor") Doctor doctor) {
+        doctorService.update(doctorId, doctor);
+        return "redirect:/doctors/" + hospitalId;
     }
+
 }

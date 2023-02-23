@@ -5,7 +5,9 @@ import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import peaksoft.model.Department;
 import peaksoft.model.Doctor;
+import peaksoft.model.Hospital;
 import peaksoft.repository.DoctorRepo;
 
 import java.util.List;
@@ -26,18 +28,15 @@ public class DoctorRepoImpl implements DoctorRepo {
 
     @Override
     public Doctor save(Doctor doctor) {
-        entityManager.persist(doctor);
+        entityManager.merge(doctor);
         return doctor;
     }
 
-    @Override
-    public List<Doctor> getAll() {
-        return entityManager.createQuery("select h from Doctor h", Doctor.class).getResultList();
-    }
+
 
     @Override
     public void deleteById(Long id) {
-        entityManager.remove(entityManager.find(Doctor.class, id));
+        entityManager.remove(entityManager.find(Doctor.class,id));
     }
 
     @Override
@@ -53,6 +52,13 @@ public class DoctorRepoImpl implements DoctorRepo {
         doctor.setPosition(newDoctor.getPosition());
         doctor.setEmail(newDoctor.getEmail());
         doctor.setDepartments(newDoctor.getDepartments());
-        doctor.setHospital(newDoctor.getHospital());
+
+
+
+    }
+
+    @Override
+    public List<Doctor> getAll(Long id) {
+        return entityManager.createQuery("select l from Doctor l join l.hospital h where h.id=:id",Doctor.class).setParameter("id",id).getResultList();
     }
 }

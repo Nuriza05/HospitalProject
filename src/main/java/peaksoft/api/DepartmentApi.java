@@ -1,13 +1,11 @@
 package peaksoft.api;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import peaksoft.exceptions.MyException;
 import peaksoft.model.Department;
-import peaksoft.model.Hospital;
 import peaksoft.service.DepartmentService;
-import peaksoft.service.HospitalService;
 
 /**
  * @created : Lenovo Nuriza
@@ -16,16 +14,13 @@ import peaksoft.service.HospitalService;
 @RequestMapping("/departments")
 public class DepartmentApi {
     private final DepartmentService departmentService;
-    private final HospitalService hospitalService;
 
     @Autowired
-    public DepartmentApi(DepartmentService departmentService, HospitalService hospitalService) {
+    public DepartmentApi(DepartmentService departmentService) {
         this.departmentService = departmentService;
-        this.hospitalService = hospitalService;
     }
 
-    @GetMapping(
-            "/{hospitalId}")
+    @GetMapping("/{hospitalId}")
     public String findAll(@PathVariable Long hospitalId,Model model) {
         model.addAttribute("departments", departmentService.getAll(hospitalId));
         model.addAttribute(hospitalId);
@@ -40,26 +35,27 @@ public class DepartmentApi {
     }
 
     @PostMapping("/{hospitalId}/savePage")
-    public String save(@PathVariable Long hospitalId,@ModelAttribute("newDepartment") Department department) {
+    public String save(@PathVariable Long hospitalId,@ModelAttribute("newDepartment") Department department) throws MyException {
         departmentService.save(hospitalId,department);
         return "redirect:/departments/"+hospitalId;
     }
 
-    @DeleteMapping("/{hospitalId}{departmentId}/delete")
-    public String deleteById(@PathVariable("id")Long id) {
-        departmentService.deleteById(id);
-        return "redirect:/departments";
+    @DeleteMapping("/{hospitalId}/{departmentId}/delete")
+    public String deleteById(@PathVariable Long hospitalId,@PathVariable Long departmentId) {
+        departmentService.deleteById(departmentId);
+        return "redirect:/departments/"+hospitalId;
     }
 
-    @GetMapping("/{id}/edit")
-    public String edit(Model model, @PathVariable("id") Long id) {
-        model.addAttribute("department", departmentService.getById(id));
+    @GetMapping("/{hospitalId}/{departmentId}/edit")
+    public String edit(Model model, @PathVariable Long departmentId,@PathVariable Long hospitalId) {
+        model.addAttribute(departmentService.getById(departmentId));
+        model.addAttribute("hospitalId", hospitalId);
         return "department/update";
     }
 
-    @PutMapping("/{id}/update")
-    public String update(@PathVariable("id") Long id, @ModelAttribute("department") Department department) {
+    @PutMapping("/{hospitalId}/{departmentId}/update")
+    public String update(@PathVariable("hospitalId") Long hospitalId,@PathVariable("departmentId")Long id,@ModelAttribute("department") Department department) throws MyException {
         departmentService.update(id, department);
-        return "redirect:/departments";
+        return "redirect:/departments/"+hospitalId;
     }
 }

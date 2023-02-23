@@ -13,6 +13,9 @@
             display: flex;
             gap: 15px;
         }
+
+
+
     </style>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
@@ -20,6 +23,7 @@
           crossorigin="anonymous">
 </head>
 <body>
+<a th:href="@{/hospitals/show}" class="btn btn-outline-danger">Home</a>
 <div style="width: 50%; margin: 0 auto">
     <table>
         <thead class="thead-dark">
@@ -54,13 +58,18 @@
             </form>
         </td>
         <td class="departments">
-            <form th:method="GET" th:action="@{/doctors}">
+            <form th:method="GET" th:action="@{/doctors/{hospitalId}(hospitalId=${hospitalId})}">
                 <input type="submit" th:value="doctors"/>
             </form>
         </td>
         <td class="patients">
-            <form th:method="GET" th:action="@{/patients}">
+            <form th:method="GET" th:action="@{/patients/{hospitalId}(hospitalId=${hospitalId})}">
                 <input type="submit" th:value="patients"/>
+            </form>
+        </td>
+        <td class="patients">
+            <form th:method="GET" th:action="@{/appointments/{hospitalId}(hospitalId=${hospitalId})}">
+                <input type="submit" th:value="appointments"/>
             </form>
         </td>
         </tr>

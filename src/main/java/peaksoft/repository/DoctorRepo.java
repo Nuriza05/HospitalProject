@@ -1,6 +1,9 @@
 package peaksoft.repository;
 
+import peaksoft.model.Department;
 import peaksoft.model.Doctor;
+import peaksoft.model.Hospital;
+
 import java.util.List;
 
 /**
@@ -8,9 +11,9 @@ import java.util.List;
  **/
 public interface DoctorRepo {
     Doctor save(Doctor doctor);
-    List<Doctor> getAll();
     void deleteById(Long id);
     Doctor getById(Long id);
     void update (Long id, Doctor newDoctor);
+    List<Doctor> getAll(Long id);
 
 }

@@ -9,7 +9,7 @@ import java.util.List;
  **/
 public interface AppointmentRepo {
     Appointment save(Appointment appointment);
-    List<Appointment> getAll();
+    List<Appointment> getAll(Long id);
     void deleteById(Long id);
     Appointment getById(Long id);
     void update (Long id, Appointment newAppointment);
