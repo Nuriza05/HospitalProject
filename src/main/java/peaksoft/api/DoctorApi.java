@@ -3,11 +3,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import peaksoft.model.Department;
 import peaksoft.model.Doctor;
 import peaksoft.service.DepartmentService;
 import peaksoft.service.DoctorService;
-import peaksoft.service.HospitalService;
+
 
 /**
  * @created : Lenovo Nuriza
@@ -23,6 +22,7 @@ public class DoctorApi {
         this.doctorService = doctorService;
         this.departmentService = departmentService;
     }
+
 
     @GetMapping("/{hospitalId}")
     public String findAll(@PathVariable Long hospitalId, Model model) {
@@ -62,5 +62,7 @@ public class DoctorApi {
         doctorService.update(doctorId, doctor);
         return "redirect:/doctors/" + hospitalId;
     }
+
+
 
 }

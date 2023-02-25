@@ -5,7 +5,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import peaksoft.exceptions.MyException;
 import peaksoft.model.Appointment;
-import peaksoft.model.Doctor;
 import peaksoft.service.AppointmentService;
 import peaksoft.service.DepartmentService;
 import peaksoft.service.DoctorService;

@@ -5,7 +5,9 @@
       <map>
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/department/mainPage.html" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/department" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/department/update.html" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/department" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/doctor/mainPage.html" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/doctor" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/hospital/mainPage.html" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/hospital" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/hospital/show.html" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/hospital" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/patient/savePage.html" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/patient" />
       </map>
     </option>

@@ -5,8 +5,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import peaksoft.model.Hospital;
-import peaksoft.service.DepartmentService;
+import peaksoft.service.DoctorService;
 import peaksoft.service.HospitalService;
+import peaksoft.service.PatientService;
 
 
 /**
@@ -16,17 +17,19 @@ import peaksoft.service.HospitalService;
 @RequestMapping("/hospitals")
 public class HospitalApi {
     private final HospitalService hospitalService;
-    private final DepartmentService departmentService;
-
+private final DoctorService doctorService;
+private final PatientService patientService;
     @Autowired
-    public HospitalApi(HospitalService hospitalService, DepartmentService departmentService) {
+    public HospitalApi(HospitalService hospitalService, DoctorService doctorService, PatientService patientService) {
         this.hospitalService = hospitalService;
-        this.departmentService = departmentService;
+        this.doctorService = doctorService;
+        this.patientService = patientService;
     }
     @GetMapping("/{id}/mainPage")
     public String show(@PathVariable("id") Long id, Model model){
         model.addAttribute("hospital",hospitalService.getById(id));
-        model.addAttribute("departments",departmentService.getAll(id));
+        model.addAttribute("doctorCount",doctorService.getAll(id).size());
+        model.addAttribute("patientCount",patientService.getAll(id).size());
         model.addAttribute("hospitalId",id);
         return "hospital/mainPage";
     }

@@ -1,15 +1,11 @@
 package peaksoft.repository.repositoryImpl;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import jakarta.persistence.Query;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import peaksoft.model.*;
 import peaksoft.repository.AppointmentRepo;
-
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 /**
@@ -17,13 +13,13 @@ import java.util.List;
  **/
 @Repository
 @Transactional
-public class AppointmentRepoImpl implements AppointmentRepo {
+public class
+AppointmentRepoImpl implements AppointmentRepo {
     @PersistenceContext
     private final EntityManager entityManager;
 
 
     @Autowired
-
     public AppointmentRepoImpl(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
@@ -36,7 +32,7 @@ public class AppointmentRepoImpl implements AppointmentRepo {
 
     @Override
     public List<Appointment> getAll(Long id) {
-        return entityManager.createQuery("select h from Hospital l join l.appointments h where l.id=:id ", Appointment.class).setParameter("id",id).getResultList();
+        return entityManager.createQuery("select h from Hospital l join l.appointments h where l.id=:id", Appointment.class).setParameter("id",id).getResultList();
     }
 
     @Override
@@ -44,8 +40,6 @@ public class AppointmentRepoImpl implements AppointmentRepo {
         List<Hospital> hospitals = entityManager.createQuery("select l from Hospital l", Hospital.class).getResultList();
         hospitals.forEach(h-> h.getAppointments().removeIf(a->a.getId().equals(id)));
         entityManager.remove(entityManager.find(Appointment.class,id));
-
-
     }
 
     @Override

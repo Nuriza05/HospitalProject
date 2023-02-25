@@ -61,4 +61,16 @@ public class DoctorRepoImpl implements DoctorRepo {
     public List<Doctor> getAll(Long id) {
         return entityManager.createQuery("select l from Doctor l join l.hospital h where h.id=:id",Doctor.class).setParameter("id",id).getResultList();
     }
+
+    @Override
+    public void assignDepsToDoctor(Long docId,List<Long> depsId) {
+        Doctor doctor = entityManager.find(Doctor.class, docId);
+        for (Long aLong : depsId) {
+            Department department = entityManager.find(Department.class, aLong);
+            doctor.getDepartments().add(department);
+        }
+    }
+
+
+
 }

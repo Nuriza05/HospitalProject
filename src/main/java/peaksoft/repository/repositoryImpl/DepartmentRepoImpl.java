@@ -49,4 +49,6 @@ public class DepartmentRepoImpl implements DepartmentRepo {
     public List<Department> getAll(Long id) {
         return entityManager.createQuery("select l from Department l join l.hospital h where h.id=:id",Department.class).setParameter("id",id).getResultList();
     }
+
+
 }

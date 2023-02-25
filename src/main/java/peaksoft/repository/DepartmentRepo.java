@@ -1,5 +1,6 @@
 package peaksoft.repository;
 
+import jakarta.persistence.EntityManager;
 import peaksoft.exceptions.MyException;
 import peaksoft.model.Department;
 
@@ -14,5 +15,6 @@ public interface DepartmentRepo {
     Department getById(Long id);
     void update (Long id, Department newDepartment) ;
     List<Department> getAll(Long id);
+
 
 }

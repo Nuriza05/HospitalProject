@@ -3,57 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <title>Save page</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-            crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-            crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-            crossorigin="anonymous"></script>
 </head>
+<style>
+    body {
+        background-color: #d0a1ae;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 130px auto;
+        max-width: 500px;
+    }
+
+    .forms {
+        display: flex;
+        flex-direction: column;
+        height: 30vh;
+        justify-content: space-around;
+        border-radius: 10px;
+        background-color: white;
+        padding: 1rem;
+    }
+
+    button {
+        width: 4rem;
+        padding: 0.3rem 0 0.3rem 0;
+        border-radius: 10px;
+        border: none;
+        background-color: #e04949;
+    }
+
+    .info-block {
+        display: flex;
+        width: 30vw;
+        justify-content: space-between;
+    }
+</style>
 <body>
 
-    <form th:action="@{/doctors/{hospitalId}/savePage(hospitalId=${hospitalId})}" th:object="${newDoctor}" method="POST">
-        <input type="hidden" th:field="*{id}">
-        <div>
-            <label for="firstName">firstName</label>
-            <input type="text" th:field="*{firstName}" id="firstName">
-        </div>
-        <div>
-            <label for="lastName">lastName</label>
-            <input type="text" th:field="*{lastName}" id="lastName">
-        </div>
-        <div>
-            <label for="position">position</label>
-            <input type="text" th:field="*{position}" id="position">
-        </div>
-        <div>
-            <label for="email">email</label>
-            <input type="text" th:field="*{email}" id="email">
-        </div>
-        <div>
-            <label for="imageLink">ImageLink</label>
-            <input type="text" th:field="*{imageLink}" id="imageLink">
-        </div>
-        <div>
-            <select th:field="*{departmentId}" multiple required>
-                <option  value="">--Select a department--</option>
-                <option th:each="department : ${departments}" th:value="${department.getId()}"
-                        th:text="${department.name}"></option>
-            </select>
-        </div>
+<form class="forms" th:action="@{/doctors/{hospitalId}/savePage(hospitalId=${hospitalId})}" th:object="${newDoctor}"
+      method="POST">
+    <input type="hidden" th:field="*{id}">
+    <div class="info-block">
+        <label for="firstName">firstName</label>
+        <input type="text" th:field="*{firstName}" id="firstName">
+    </div>
+    <div class="info-block">
+        <label for="lastName">lastName</label>
+        <input type="text" th:field="*{lastName}" id="lastName">
+    </div>
+    <div class="info-block">
+        <label for="position">position</label>
+        <input type="text" th:field="*{position}" id="position">
+    </div>
+    <div class="info-block">
+        <label for="email">email</label>
+        <input type="text" th:field="*{email}" id="email">
+    </div>
+    <div class="info-block">
+        <label for="imageLink">ImageLink</label>
+        <input type="text" th:field="*{imageLink}" id="imageLink">
+    </div>
+    <div class="info-block">
+        <label for="imageLink">Departments</label>
+        <select th:field="*{departmentId}" multiple required>
+            <option value="">--Select a department--</option>
+            <option th:each="department : ${departments}" th:value="${department.getId()}"
+                    th:text="${department.name}"></option>
+        </select>
+    </div>
 
+    <div>
         <div>
             <input type="submit" value="Save">
         </div>
-    </form>
-    <form th:action="@{/doctors/{hospitalId}(hospitalId=${hospitalId})}">
-        <input type="submit" th:value="Cancel"/>
-    </form>
-</div>
+        <form th:action="@{/doctors/{hospitalId}(hospitalId=${hospitalId})}">
+            <input type="submit" th:value="Cancel"/>
+        </form>
+    </div>
+</form>
 </body>
 </html>

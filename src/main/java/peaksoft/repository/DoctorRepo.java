@@ -15,5 +15,6 @@ public interface DoctorRepo {
     Doctor getById(Long id);
     void update (Long id, Doctor newDoctor);
     List<Doctor> getAll(Long id);
+    void assignDepsToDoctor(Long docId,List<Long> depsId);
 
 }

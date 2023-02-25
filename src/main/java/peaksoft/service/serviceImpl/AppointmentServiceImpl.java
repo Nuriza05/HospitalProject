@@ -1,5 +1,4 @@
 package peaksoft.service.serviceImpl;
-
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -7,15 +6,7 @@ import peaksoft.exceptions.MyException;
 import peaksoft.model.Appointment;
 import peaksoft.model.Hospital;
 import peaksoft.repository.*;
-import peaksoft.repository.repositoryImpl.AppointmentRepoImpl;
-import peaksoft.repository.repositoryImpl.DoctorRepoImpl;
-import peaksoft.repository.repositoryImpl.PatientRepoImpl;
 import peaksoft.service.AppointmentService;
-import peaksoft.service.DoctorService;
-
-import java.time.DateTimeException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 /**

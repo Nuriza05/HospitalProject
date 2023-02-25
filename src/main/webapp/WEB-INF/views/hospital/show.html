@@ -13,31 +13,36 @@
             gap: 50px;
             margin-top: 50px;
         }
+
         .form {
             display: flex;
             align-items: center;
             justify-content: center;
             margin-top: 50px;
         }
-        .first-input{
-            width:400px;
+
+        .first-input {
+            width: 400px;
             height: 40px;
             border-radius: 5px;
             font-size: 20px;
             color: black;
         }
-        .search-button{
+
+        .search-button {
             padding: 5px 10px;
             background-color: cornflowerblue;
             color: aliceblue;
             border-radius: 10px;
             margin-left: 10px;
         }
+
         .search-button:hover {
-           background-color: blue;
+            background-color: blue;
         }
+
         .clear-button {
-          font-size: 20px;
+            font-size: 20px;
             font-weight: 900;
             color: aliceblue;
             background-color: indianred;
@@ -45,40 +50,52 @@
             border-radius: 10px;
             margin-left: 10px;
         }
+
         .clear-button:hover {
             background-color: red;
         }
-        .name{
+
+        .name {
             border: 1px solid black;
             min-width: 100px;
-            padding: 3px;
-            background-color: darkcyan;
+            padding: 0px;
+            background-color: cornflowerblue;
             color: #fff;
-            cursor:pointer;
+            cursor: pointer;
         }
-.second-form{
-    font-size: 18px;
-    color: white;
-}
-.second-form > input {
-    color: white;
-    background-color: chartreuse;
-}
-.card-body {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    margin-top: 10px;
-    width:300px;
-    flex-wrap: wrap;
-}
+
+        .second-form {
+            font-size: 18px;
+            color: white;
+        }
+
+        .second-form > input {
+            color: white;
+            background-color: slateblue;
+        }
+
+        .card-body {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            margin-top: 10px;
+            width: 300px;
+            flex-wrap: wrap;
+        }
+        .btn-outline-primary{
+            padding: 5px 10px;
+            background-color: blueviolet ;
+            color: azure;
+            border-radius: 10px;
+            margin-left: 10px;
+        }
     </style>
 
 </head>
 <form th:action="@{/hospitals/show}" method="get" class="form">
     <input type="text" name="keyWord" th:value="${keyWord}" class="first-input"
-    placeholder="Search hospitals"
+           placeholder="Search hospitals"
     >
     <button type="submit" class="search-button">Search</button>
     <form th:action="@{/hospitals/show}" method="get">
@@ -90,7 +107,7 @@
 
 
 <body>
-<div class="container" >
+<div class="container">
     <div style="width: 18rem;"
          th:each="hospital:${hospitals}">
         <img th:src="${hospital.getImageLink()}" object-fit width="223" height="170px">

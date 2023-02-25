@@ -4,31 +4,65 @@
     <meta charset="UTF-8">
     <title>Save page</title>
 </head>
+<style>
+    body {
+        background-color:#d0a1ae;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 130px auto;
+        max-width: 500px;
+    }
+
+    .forms{
+        display: flex;
+        flex-direction: column;
+        height: 30vh;
+        justify-content: space-around;
+        border-radius: 10px;
+        background-color: white;
+        padding: 1rem;
+    }
+
+    button{
+        width: 4rem;
+        padding: 0.3rem 0 0.3rem 0 ;
+        border-radius: 10px;
+        border: none;
+        background-color: #e04949;
+    }
+
+    .info-block{
+        display: flex;
+        width: 30vw;
+        justify-content: space-between;
+    }
+</style>
 <body>
-<form th:method="POST" th:action="@{/appointments/{hospitalId}/savePage(hospitalId=${hospitalId})}"
+<form class="forms" th:method="POST" th:action="@{/appointments/{hospitalId}/savePage(hospitalId=${hospitalId})}"
       th:object="${newAppointment}">
     <input type="hidden" th:field="*{id}">
-    <div>
+    <div class="info-block">
         <label for="date">LocalDate</label>
         <input type="date" th:field="*{date}" id="date">
     </div>
-    <div>
+    <div class="info-block">
+        <label for="date">Departments</label>
         <select th:field="*{departmentId}">
-            <option  value="">--departments--</option>
+            <option value="" >>>departments<<</option>
             <option th:each="department : ${departments}" th:value="${department.id}"
                     th:text="${department.name}"></option>
         </select>
     </div>
-    <div >
+    <div class="info-block">
+        <label for="date">Doctors</label>
         <select th:field="*{doctorId}">
             <option value="">>>doctors<<</option>
             <option th:each="doctor : ${doctors}" th:value="${doctor.id}"
                     th:text="${doctor.firstName}"></option>
         </select>
     </div>
-    <br>
-
-    <div>
+    <div class="info-block">
+        <label for="date">Patients</label>
         <select th:field="*{patientId}">
             <option value="">>>patients<<</option>
             <option th:each="patient : ${patients}" th:value="${patient.id}"
@@ -37,11 +71,12 @@
     </div>
 
     <div>
-        <input type="submit" value="Save">
+        <button type="submit">Save</button>
+        <form th:action="@{/appointments/{hospitalId}(hospitalId=${hospitalId})}">
+            <button  th:value="Cancel">Cancel</button>
+        </form>
     </div>
-    <form th:action="@{/appointments/{hospitalId}(hospitalId=${hospitalId})}">
-        <input type="submit" th:value="Cancel"/>
-    </form>
+
 </form>
 </body>
 </html>
