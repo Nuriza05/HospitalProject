@@ -52,6 +52,7 @@ public class Doctor {
     private List<Appointment> appointments;
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.PERSIST, CascadeType.MERGE})
     private Hospital hospital;
+    @NotEmpty(message = "Image shouldn't be empty!")
     private String imageLink;
     @Transient
     private Long hospitalId;

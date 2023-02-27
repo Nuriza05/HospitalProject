@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>update</title>
-
 </head>
 <style>
     body {
-        background-color: #d0a1ae;
+        background-color: orchid;
         border-radius: 10px;
         padding: 20px;
         margin: 130px auto;
@@ -63,11 +62,12 @@
 
     <div>
         <button type="submit">Update</button>
-        <form th:method="GET" th:action="@{/hospitals/{id}/mainPage(id=${hospital.getId()})}">
-            <button type="submit" th:value="Cancel">Cancel</button>
-        </form>
     </div>
 </form>
+<form th:method="GET" th:action="@{/hospitals/{id}/mainPage(id=${hospital.getId()})}">
+    <button type="submit" th:value="Cancel">Cancel</button>
+</form>
+
 </body>
 
 </html>

@@ -6,7 +6,7 @@
 </head>
 <style>
     body {
-        background-color: #d0a1ae;
+        background-color: orchid;
         border-radius: 10px;
         padding: 20px;
         margin: 130px auto;
@@ -58,11 +58,13 @@
 
     <div>
         <button type="submit">save</button>
-        <form th:action="@{/hospitals/show}">
-            <input type="submit" th:value="Cancel"/>
-        </form>
+
     </div>
 </form>
+<form th:action="@{/hospitals/show}">
+    <input type="submit" th:value="Cancel"/>
+</form>
+
 </body>
 </html>
 

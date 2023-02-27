@@ -9,7 +9,7 @@
 </head>
 <style>
     body {
-        background-color: #d0a1ae;
+        background-color: orchid;
         border-radius: 10px;
         padding: 20px;
         margin: 130px auto;
@@ -66,10 +66,10 @@
     </div>
     <div>
         <button type="submit">Update</button>
-        <form th:action="@{/doctors/{hospitalId}(hospitalId=${hospitalId})}">
-            <button type="submit" th:value="Cancel">Cancel</button>
-        </form>
     </div>
+</form>
+<form th:action="@{/doctors/{hospitalId}(hospitalId=${hospitalId})}">
+    <button type="submit" th:value="Cancel">Cancel</button>
 </form>
 </body>
 </html>

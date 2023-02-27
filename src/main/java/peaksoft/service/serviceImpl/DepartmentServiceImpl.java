@@ -35,22 +35,23 @@ public class DepartmentServiceImpl implements DepartmentService {
 
     @Override
     public Department save(Long hospitalId, Department newDepartment) throws MyException {
-        if (departmentRepo.getAll(hospitalId).isEmpty()) {
+//        if (departmentRepo.getAll(hospitalId).isEmpty()) {
             Hospital hospital = hospitalRepo.getById(hospitalId);
             newDepartment.setHospital(hospital);
             return departmentRepo.save(newDepartment);
-        } else {
-            for (Department department : departmentRepo.getAll(hospitalId)) {
-                if (department.getName().equals(newDepartment.getName())) {
-                    throw new MyException("Department name is already exit!");
-                } else {
-                    Hospital hospital = hospitalRepo.getById(hospitalId);
-                    newDepartment.setHospital(hospital);
-                    return departmentRepo.save(newDepartment);
-                }
-            }
-            return null;
-        }
+//        } else {
+//            for (Department department : departmentRepo.getAll(hospitalId)) {
+//                if (department.getName().equals(newDepartment.getName())) {
+//                    throw new MyException("Department name is already exit!");
+//                }
+//                else {
+//                    Hospital hospital = hospitalRepo.getById(hospitalId);
+//                    newDepartment.setHospital(hospital);
+//                    return departmentRepo.save(newDepartment);
+//                }
+//            }
+//            return null;
+//        }
     }
 
 

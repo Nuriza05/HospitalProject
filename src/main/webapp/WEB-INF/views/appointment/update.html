@@ -7,7 +7,7 @@
 </head>
 <style>
     body {
-        background-color: #d0a1ae;
+        background-color: orchid;
         border-radius: 10px;
         padding: 20px;
         margin: 130px auto;
@@ -28,9 +28,10 @@
         display: flex;
         justify-content: space-between;
     }
-    button{
+
+    button {
         width: 4rem;
-        padding: 0.3rem 0 0.3rem 0 ;
+        padding: 0.3rem 0 0.3rem 0;
         border-radius: 10px;
         border: none;
         background-color: #e04949;
@@ -38,46 +39,46 @@
 
 </style>
 <body>
-    <form class="forms" th:action="@{update}"
-          th:method="PUT" th:object="${appointment}">
+<form class="forms" th:action="@{update}"
+      th:method="PUT" th:object="${appointment}">
 
-        <div class="info-block">
-            <label for="birthday">Recording date:</label>
-            <input type="date" th:field="*{date}" id="birthday" name="birthday" required>
-        </div>
+    <div class="info-block">
+        <label for="birthday">Recording date:</label>
+        <input type="date" th:field="*{date}" id="birthday" name="birthday" required>
+    </div>
 
-        <div class="info-block">
-            <label for="domain">Patient</label>
-            <select th:field="*{patientId}" id="domain" name="domain" required>
-                <option th:each="pat : ${patients}" th:value="${pat.getId()}"
-                        th:text="${pat.getLastName()+' '+pat.getFirstName()}">Facebook
-                </option>
-            </select>
-        </div>
+    <div class="info-block">
+        <label for="domain">Patient</label>
+        <select th:field="*{patientId}" id="domain" name="domain" required>
+            <option th:each="pat : ${patients}" th:value="${pat.getId()}"
+                    th:text="${pat.getLastName()+' '+pat.getFirstName()}">Facebook
+            </option>
+        </select>
+    </div>
 
-        <div class="info-block">
-            <label for="doctor">Doctor</label>
-            <select th:field="*{doctorId}" id="doctor" name="domain" required>
-                <option th:each="doc : ${doctors}" th:value="${doc.getId()}"
-                        th:text="${doc.getLastName()+' '+doc.getFirstName()}">Doctor
-                </option>
-            </select>
-        </div>
+    <div class="info-block">
+        <label for="doctor">Doctor</label>
+        <select th:field="*{doctorId}" id="doctor" name="domain" required>
+            <option th:each="doc : ${doctors}" th:value="${doc.getId()}"
+                    th:text="${doc.getLastName()+' '+doc.getFirstName()}">Doctor
+            </option>
+        </select>
+    </div>
 
-        <div class="info-block">
-            <label for="dep">Department</label>
-            <select th:field="*{departmentId}" id="dep" name="domain" required>
-                <option th:each="dep : ${departments}" th:value="${dep.getId()}" th:text="${dep.getName()}">dep</option>
-            </select>
-        </div>
-        <div>
-            <button type="submit">Update</button>
-            <form th:action="@{/appointments/{hospitalId}(hospitalId=${hospitalId})}">
-                <button type="submit" th:value="Cancel">Cancel</button>
-            </form>
-        </div>
+    <div class="info-block">
+        <label for="dep">Department</label>
+        <select th:field="*{departmentId}" id="dep" name="domain" required>
+            <option th:each="dep : ${departments}" th:value="${dep.getId()}" th:text="${dep.getName()}">dep</option>
+        </select>
+    </div>
+    <div>
+        <button type="submit">Update</button>
+    </div>
+</form>
+<form th:action="@{/appointments/{hospitalId}(hospitalId=${hospitalId})}">
+    <button type="submit" th:value="Cancel">Cancel</button>
+</form>
 
-    </form>
 </body>
 
 </html>

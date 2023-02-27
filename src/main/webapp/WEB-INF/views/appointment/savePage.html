@@ -6,14 +6,14 @@
 </head>
 <style>
     body {
-        background-color:#d0a1ae;
+        background-color: orchid;
         border-radius: 10px;
         padding: 20px;
         margin: 130px auto;
         max-width: 500px;
     }
 
-    .forms{
+    .forms {
         display: flex;
         flex-direction: column;
         height: 30vh;
@@ -23,15 +23,15 @@
         padding: 1rem;
     }
 
-    button{
+    button {
         width: 4rem;
-        padding: 0.3rem 0 0.3rem 0 ;
+        padding: 0.3rem 0 0.3rem 0;
         border-radius: 10px;
         border: none;
         background-color: #e04949;
     }
 
-    .info-block{
+    .info-block {
         display: flex;
         width: 30vw;
         justify-content: space-between;
@@ -48,7 +48,7 @@
     <div class="info-block">
         <label for="date">Departments</label>
         <select th:field="*{departmentId}">
-            <option value="" >>>departments<<</option>
+            <option value="">>>departments<<</option>
             <option th:each="department : ${departments}" th:value="${department.id}"
                     th:text="${department.name}"></option>
         </select>
@@ -58,7 +58,7 @@
         <select th:field="*{doctorId}">
             <option value="">>>doctors<<</option>
             <option th:each="doctor : ${doctors}" th:value="${doctor.id}"
-                    th:text="${doctor.firstName}"></option>
+                    th:text="${doctor.lastName+' '+doctor.firstName}"></option>
         </select>
     </div>
     <div class="info-block">
@@ -66,17 +66,16 @@
         <select th:field="*{patientId}">
             <option value="">>>patients<<</option>
             <option th:each="patient : ${patients}" th:value="${patient.id}"
-                    th:text="${patient.firstName}"></option>
+                    th:text="${patient.getLastName+' '+patient.getFirstName()}"></option>
         </select>
-    </div>
-
     <div>
         <button type="submit">Save</button>
-        <form th:action="@{/appointments/{hospitalId}(hospitalId=${hospitalId})}">
-            <button  th:value="Cancel">Cancel</button>
-        </form>
     </div>
-
+    </div>
 </form>
+<form th:action="@{/appointments/{hospitalId}(hospitalId=${hospitalId})}">
+    <button th:value="Cancel">Cancel</button>
+</form>
+
 </body>
 </html>

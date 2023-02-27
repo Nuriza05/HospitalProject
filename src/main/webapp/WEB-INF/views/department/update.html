@@ -9,12 +9,13 @@
 </head>
 <style>
     body {
-        background-color: #d0a1ae;
+        background-color: orchid;
         border-radius: 10px;
         padding: 20px;
         margin: 130px auto;
         max-width: 500px;
     }
+
     .forms {
         display: flex;
         flex-direction: column;
@@ -32,7 +33,8 @@
         border: none;
         background-color: #e04949;
     }
-    .info-block{
+
+    .info-block {
         display: flex;
         justify-content: space-between;
     }
@@ -48,10 +50,10 @@
     </div>
     <div>
         <button type="submit">Update</button>
-        <form th:action="@{/departments/{hospitalId}(hospitalId=${hospitalId})}">
-            <button type="submit" th:value="Cancel">Cancel</button>
-        </form>
     </div>
+</form>
+<form th:action="@{/departments/{hospitalId}(hospitalId=${hospitalId})}">
+    <button type="submit" th:value="Cancel">Cancel</button>
 </form>
 </body>
 </html>

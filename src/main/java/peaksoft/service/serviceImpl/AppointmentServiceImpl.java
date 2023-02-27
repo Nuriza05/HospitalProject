@@ -1,4 +1,5 @@
 package peaksoft.service.serviceImpl;
+
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -7,6 +8,8 @@ import peaksoft.model.Appointment;
 import peaksoft.model.Hospital;
 import peaksoft.repository.*;
 import peaksoft.service.AppointmentService;
+
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -24,7 +27,6 @@ public class AppointmentServiceImpl implements AppointmentService {
     @Transactional
     @Override
     public Appointment save(Long id, Appointment appointment) throws MyException {
-
         Hospital hospital = hospitalRepo.getById(id);
         Appointment appointment1 = new Appointment();
         appointment1.setId(appointment.getId());
@@ -33,9 +35,11 @@ public class AppointmentServiceImpl implements AppointmentService {
         appointment1.setDepartment(departmentRepo.getById(appointment.getDepartmentId()));
         appointment1.setDate(appointment.getDate());
         hospital.addAppoint(appointment1);
-        return appointmentRepo.save(appointment1);
-
-
+        if (appointment1.getDate().isAfter(LocalDate.now())) {
+            return appointmentRepo.save(appointment1);
+        } else {
+            throw new MyException("Date should be in future time!");
+        }
     }
 
     @Override
@@ -44,7 +48,7 @@ public class AppointmentServiceImpl implements AppointmentService {
     }
 
     @Override
-    public void deleteById(Long hId,Long id) {
+    public void deleteById(Long hId, Long id) {
         appointmentRepo.deleteById(id);
 
     }

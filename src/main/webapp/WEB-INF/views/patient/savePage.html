@@ -6,7 +6,7 @@
 </head>
 <style>
     body {
-        background-color: #d0a1ae;
+        background-color: orchid;
         border-radius: 10px;
         padding: 20px;
         margin: 130px auto;
@@ -39,39 +39,39 @@
 </style>
 <body>
 
-    <form class="forms" th:action="@{/patients/{hospitalId}/savePage(hospitalId=${hospitalId})}" th:object="${newPatient}"
-          method="POST">
-        <input type="hidden" th:field="*{id}">
-        <div class="info-block">
-            <label for="name">First name</label>
-            <input type="text" th:field="*{firstName}" id="name">
-        </div>
-        <div class="info-block">
-            <label for="lname">Last name</label>
-            <input type="text" th:field="*{lastName}" id="lname">
-        </div>
-        <div class="info-block">
-            <label for="lname">Gender</label>
-            <select th:field="*{gender}">
-                <option value="">--Gender--</option>
-                <option th:each="gen : ${genders}" th:value="${gen.name()}"
-                        th:text="${gen.name}"></option>
-            </select>
-        </div>
-        <div class="info-block">
-            <label for="email">Email</label>
-            <input type="text" th:field="*{email}" id="email">
-        </div>
-        <div class="info-block">
-            <label for="phnumber">Phone number</label>
-            <input type="text" th:field="*{phoneNumber}" id="phnumber">
-        </div>
-        <div>
-            <input type="submit" value="Save">
-            <form th:action="@{/patients/{hospitalId}(hospitalId=${hospitalId})}">
-                <input type="submit" th:value="Cancel"/>
-            </form>
-        </div>
-    </form>
+<form class="forms" th:action="@{/patients/{hospitalId}/savePage(hospitalId=${hospitalId})}" th:object="${newPatient}"
+      method="POST">
+    <input type="hidden" th:field="*{id}">
+    <div class="info-block">
+        <label for="name">First name</label>
+        <input type="text" th:field="*{firstName}" id="name">
+    </div>
+    <div class="info-block">
+        <label for="lname">Last name</label>
+        <input type="text" th:field="*{lastName}" id="lname">
+    </div>
+    <div class="info-block">
+        <label for="lname">Gender</label>
+        <select th:field="*{gender}">
+            <option value="">--Gender--</option>
+            <option th:each="gen : ${genders}" th:value="${gen.name()}"
+                    th:text="${gen.name}"></option>
+        </select>
+    </div>
+    <div class="info-block">
+        <label for="email">Email</label>
+        <input type="text" th:field="*{email}" id="email">
+    </div>
+    <div class="info-block">
+        <label for="phnumber">Phone number</label>
+        <input type="text" th:field="*{phoneNumber}" id="phnumber">
+    </div>
+    <div>
+        <input type="submit" value="Save">
+    </div>
+</form>
+<form th:action="@{/patients/{hospitalId}(hospitalId=${hospitalId})}">
+    <input type="submit" th:value="Cancel"/>
+</form>
 </body>
 </html>

@@ -6,7 +6,7 @@
 </head>
 <style>
     body {
-        background-color: #d0a1ae;
+        background-color: orchid;
         border-radius: 10px;
         padding: 20px;
         margin: 130px auto;
@@ -70,15 +70,9 @@
                     th:text="${department.name}"></option>
         </select>
     </div>
-
-    <div>
-        <div>
-            <input type="submit" value="Save">
-        </div>
-        <form th:action="@{/doctors/{hospitalId}(hospitalId=${hospitalId})}">
-            <input type="submit" th:value="Cancel"/>
-        </form>
-    </div>
+    <input type="submit" value="Save">
 </form>
+<form th:action="@{/doctors/{hospitalId}(hospitalId=${hospitalId})}">
+    <input type="submit" th:value="Cancel"/></form>
 </body>
 </html>

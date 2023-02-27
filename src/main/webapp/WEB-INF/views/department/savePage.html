@@ -6,7 +6,7 @@
 </head>
 <style>
     body {
-        background-color: #d0a1ae;
+        background-color: orchid;
         border-radius: 10px;
         padding: 20px;
         margin: 130px auto;
@@ -46,12 +46,13 @@
         <input type="text" th:field="*{name}" id="name">
     </div>
 
-    <div>
+
         <input type="submit" value="Save"/>
+</form>
         <form th:action="@{/departments/{hospitalId}(hospitalId=${hospitalId})}">
             <input type="submit" th:value="Cancel"/>
         </form>
-    </div>
-</form>
+
+
 </body>
 </html>
