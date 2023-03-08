@@ -121,7 +121,6 @@
         <p>Email</p>
         <p th:text="${pat.getEmail()}"></p>
     </div>
-    <div class="btn-container">
         <form th:method="GET"
               th:action="@{/patients/{hospitalId}/{patientId}/edit(hospitalId=${hospitalId},patientId=${pat.getId()})}">
             <input type="submit" th:value="Update"/>

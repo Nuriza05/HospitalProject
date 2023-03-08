@@ -23,7 +23,6 @@ public class AppointmentServiceImpl implements AppointmentService {
     private final DoctorRepo doctorRepo;
     private final PatientRepo patientRepo;
     private final DepartmentRepo departmentRepo;
-
     @Transactional
     @Override
     public Appointment save(Long id, Appointment appointment) throws MyException {
@@ -34,8 +33,9 @@ public class AppointmentServiceImpl implements AppointmentService {
         appointment1.setDoctor(doctorRepo.getById(appointment.getDoctorId()));
         appointment1.setDepartment(departmentRepo.getById(appointment.getDepartmentId()));
         appointment1.setDate(appointment.getDate());
-        hospital.addAppoint(appointment1);
+
         if (appointment1.getDate().isAfter(LocalDate.now())) {
+            hospital.addAppoint(appointment1);
             return appointmentRepo.save(appointment1);
         } else {
             throw new MyException("Date should be in future time!");

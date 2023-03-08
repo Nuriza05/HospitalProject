@@ -7,8 +7,6 @@ import org.springframework.stereotype.Repository;
 import peaksoft.exceptions.MyException;
 import peaksoft.model.*;
 import peaksoft.repository.AppointmentRepo;
-
-import java.time.LocalDate;
 import java.util.List;
 
 /**
